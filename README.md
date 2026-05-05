@@ -6,7 +6,7 @@ It works by **indexing** your documents (reading them and turning them into sear
 
 ---
 
-## How it works (in plain English)
+## How it works
 
 1. You add your API keys (so the app can use AI models).
 2. You pick which collections in Zotero to index.
