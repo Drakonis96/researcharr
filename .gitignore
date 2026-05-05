@@ -1,0 +1,48 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables / Secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.secrets
+
+# Flask instance folder (user data, settings, API keys, conversations, vector store)
+instance/
+**/instance/
+
+# IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+
+# Zotero build artifacts
+researcharr.xpi
+*.xpi
+
+# Node (if ever added)
+node_modules/
+
+# Logs
+*.log
+logs/

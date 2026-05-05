@@ -1,0 +1,20 @@
+services:
+  researcharr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:5000:5000"
+      - "127.0.0.1:5001:5001"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 5000
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: 5001
+      ZOTERO_DB_PATH: /zotero/zotero.sqlite
+      ZOTERO_STORAGE_DIR: /zotero/storage
+      RESEARCHARR_VECTOR_STORE_DIR: /app/webapp/instance/vector-store
+    volumes:
+      - ./webapp/instance:/app/webapp/instance
+      - ${HOME}/Zotero:/zotero:ro
+    restart: unless-stopped

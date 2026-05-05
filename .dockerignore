@@ -1,0 +1,38 @@
+.DS_Store
+**/.DS_Store
+.git
+.claude/
+.gitignore
+.venv
+venv/
+env/
+researcharr.xpi
+*.xpi
+webapp/.DS_Store
+webapp/venv
+webapp/instance
+webapp/__pycache__
+**/__pycache__
+**/*.pyc
+*.pyo
+*.pyd
+
+# Secrets & env
+.env
+.env.local
+*.key
+*.pem
+*.secrets
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Docker
+.dockerignore
