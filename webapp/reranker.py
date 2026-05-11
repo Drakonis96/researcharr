@@ -217,9 +217,9 @@ class Reranker:
             self._impl = NoopReranker()
         elif mode == RERANKER_MODE_API:
             if not client or not reranker_model:
-                logger.warning("API reranker requires a client and reranker_model; falling back to local")
-                self._mode = RERANKER_MODE_LOCAL
-                self._impl = LocalReranker()
+                logger.warning("API reranker requires a client and reranker_model; disabling reranking")
+                self._mode = RERANKER_MODE_OFF
+                self._impl = NoopReranker()
             else:
                 provider_name = getattr(client, '__class__', type(client)).__name__
                 if provider_name == "OpenRouterProvider":

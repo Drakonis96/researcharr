@@ -761,7 +761,15 @@ def retrieve_query_results(client, embedding_model, question, filter_ids, reques
 
     merged_results = merge_retrieval_result_sets(result_sets, top_k=max(candidate_k * 4, 40))
     current_reranker = get_reranker(client=client, chat_model=chat_model, reranker_mode=reranker_mode)
-    reranked_results = current_reranker.rerank(question, merged_results, top_k=rerank_k)
+    try:
+        reranked_results = current_reranker.rerank(question, merged_results, top_k=rerank_k)
+    except Exception:
+        app.logger.exception("Reranker failed; using retrieval results without reranking")
+        reranked_results = sorted(
+            merged_results,
+            key=lambda result: result.get("score", 0.0),
+            reverse=True,
+        )[:rerank_k]
     reranked_results = trim_by_score_gap(reranked_results, min_results=min(3, requested_top_k))
     final_results = adaptive_filter_results(question, reranked_results, limit=requested_top_k, max_per_source=max_per_source)
     return final_results, query_variants
